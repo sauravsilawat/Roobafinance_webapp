@@ -21,7 +21,7 @@ const HeroSection3 = () => {
         const video = videoRef.current;
         if (video) {
             video.play();
-            video.pause(); // Ensure the video doesn't play automatically
+            video.pause(); 
         }
     }, []);
 
@@ -34,7 +34,7 @@ const HeroSection3 = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            setScrollY(window.scrollY - 4050);
+            setScrollY(window.scrollY - 4150);
         };
 
         window.addEventListener('scroll', handleScroll);
@@ -46,7 +46,7 @@ const HeroSection3 = () => {
 
     useEffect(() => {
         words.forEach((_, index) => {
-            const wordPosition = (index) * 20; // Adjust this value to control the speed
+            const wordPosition = (index) * 20; 
             if (scrollY > wordPosition) {
                 controls.start((i) => (i === index ? { opacity: 1, color: "white" } : {}));
             } else {

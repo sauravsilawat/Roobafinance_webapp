@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 import title from '../assets/general/howtoInvest.svg';
 import lp1 from '../assets/general/lp1.svg';
@@ -33,9 +34,8 @@ const HowtoInvest = () => {
       <div className='w-[70%] m-auto flex gap-20'>
         <div className='w-[50%]'>
           <img src={title} className='mb-20' alt="howtoinvest" />
-
           <div className='flex gap-6'>
-            <figure className='w-[3px] h-auto rounded-full bg-black'></figure>
+            <figure className={`w-[8px] h-[120px] ${openDetails === 'discoverOpportunities' ? "h-[230px]" : " "} ${openDetails === 'investWithFlexibility' ? "h-[320px]" : " "} bg-[#4375FB]`}></figure>
 
             <div className='flex flex-col gap-10'>
               <div>
@@ -88,9 +88,23 @@ const HowtoInvest = () => {
               </div>
             </div>
           </div>
+
         </div>
 
-        <img src={getImage()} className='mt-10 w-[50%]' alt="lp" />
+        <div className='mt-[180px] w-[50%]'>
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={openDetails}
+              src={getImage()}
+              alt="lp"
+              initial={{ opacity: 0, y: 100, scale: 0.8 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -50, scale: 1.1 }}
+              transition={{ duration: 0.5 }}
+              className='w-full'
+            />
+          </AnimatePresence>
+        </div>
       </div>
     </div>
   );
